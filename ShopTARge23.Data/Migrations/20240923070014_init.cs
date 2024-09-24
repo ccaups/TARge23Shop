@@ -22,7 +22,7 @@ namespace ShopTARge23.Data.Migrations
                     BuiltDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Crew = table.Column<int>(type: "int", nullable: false),
                     EnginePower = table.Column<int>(type: "int", nullable: false),
-                    CreaedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
