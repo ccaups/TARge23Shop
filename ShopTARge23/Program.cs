@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ShopTARge23.ApplicationServices.Services;
-using ShopTARge23.Core.Servicesinerface;
+using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Data;
 
 
