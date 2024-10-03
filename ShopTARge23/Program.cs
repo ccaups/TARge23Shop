@@ -17,6 +17,7 @@ namespace ShopTARge23
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<ISpaceshipsServices, SpaceshipsServices>();
+            builder.Services.AddScoped<IKindergartensServices, KindergartensServices>();
             builder.Services.AddScoped<IFileServices, FileServices>();
 
             builder.Services.AddDbContext<ShopTARge23Context>(options =>
