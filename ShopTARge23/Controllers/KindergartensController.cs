@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ShopTARge23.ApplicationServices.Services;
 using ShopTARge23.Core.Dto;
 using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Data;
 using ShopTARge23.Models.Kindergartens;
-using ShopTARge23.Models.Spaceships;
 
 namespace ShopTARge23.Controllers
 {
@@ -71,6 +68,29 @@ namespace ShopTARge23.Controllers
             }
 
             return RedirectToAction(nameof(Index), vm);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var kindergarten = await _kindergartensServices.DetailAsync(id);
+
+            if (kindergarten == null)
+            {
+                return View("Error");
+            }
+
+            var vm = new KindergartenDetailsViewModel();
+
+            vm.Id = kindergarten.Id;
+            vm.GroupName = kindergarten.GroupName;
+            vm.ChildrenCount = kindergarten.ChildrenCount;
+            vm.KindergartenName = kindergarten.KindergartenName;
+            vm.Teacher = kindergarten.Teacher;
+            vm.CreatedAt = kindergarten.CreatedAt;
+            vm.UpdatedAt = kindergarten.UpdatedAt;
+
+            return View(vm);
         }
 
         [HttpGet]
