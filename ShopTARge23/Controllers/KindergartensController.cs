@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShopTARge23.ApplicationServices.Services;
+using ShopTARge23.Core.Dto;
 using ShopTARge23.Core.ServiceInterface;
 using ShopTARge23.Data;
 using ShopTARge23.Models.Kindergartens;
@@ -30,10 +32,44 @@ namespace ShopTARge23.Controllers
                     GroupName = x.GroupName,
                     ChildrenCount = x.ChildrenCount,
                     KindergartenName = x.KindergartenName,
-                    Teacher = x.Teacher
+                    Teacher = x.Teacher,
+                    UpdatedAt = x.UpdatedAt,
                 });
 
             return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            KindergartensCreateUpdateViewModel result = new();
+
+            return View("CreateUpdate", result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(KindergartensCreateUpdateViewModel vm)
+        {
+            var dto = new KindergartenDto()
+            {
+                Id = vm.Id,
+                GroupName = vm.GroupName,
+                ChildrenCount = vm.ChildrenCount,
+                KindergartenName = vm.KindergartenName,
+                Teacher = vm.Teacher,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+
+            };
+
+            var result = await _kindergartensServices.Create(dto);
+
+            if (result == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index), vm);
         }
     }
 }
