@@ -17,7 +17,6 @@ namespace ShopTARge23.Core.Dto
         public int Crew { get; set; }
         public int EnginePower { get; set; }
 
-        //public Guid? SpaceshipId { get; set; } 
 
         public List<IFormFile> Files { get; set; }
 

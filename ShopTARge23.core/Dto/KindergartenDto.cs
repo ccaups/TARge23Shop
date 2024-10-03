@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,14 @@ using System.Threading.Tasks;
 
 namespace ShopTARge23.Core.Dto
 {
-    internal class KindergartenDto
+    public class KindergartenDto
     {
+        public Guid? Id { get; set; }
+        public string GroupName { get; set; }
+        public int ChildrenCount { get; set; }
+        public string KindergartenName { get; set; }
+        public String Teacher { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }
