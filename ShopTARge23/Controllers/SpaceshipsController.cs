@@ -23,7 +23,6 @@ namespace ShopTARge23.Controllers
             _spaceshipServices = spaceshipsServices;
         }
 
-
         public IActionResult Index()
         {
             var result = _context.Spaceships
@@ -229,23 +228,5 @@ namespace ShopTARge23.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> RemoveImage(ImageViewModel vm)
-        //{
-        //    var dto = new FileToApiDto()
-        //    {
-        //        Id = vm.ImageId,
-        //    };
-
-        //    var image = await _fileServices.RemoveImageFromApi(dto);
-
-        //    if (image == null)
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-
-        //    return RedirectToAction(nameof(Index));
-        //}
     }
 }

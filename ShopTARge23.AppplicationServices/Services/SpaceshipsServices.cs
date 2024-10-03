@@ -41,7 +41,6 @@ namespace ShopTARge23.ApplicationServices.Services
             await _context.SaveChangesAsync();
 
             return spaceship;
-
         }
 
         public async Task<Spaceship> DetailAsync(Guid id)
@@ -93,6 +92,5 @@ namespace ShopTARge23.ApplicationServices.Services
 
             return spaceship;
         }
-
     }
 }

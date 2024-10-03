@@ -9,10 +9,7 @@ namespace ShopTARge23.Data
     {
         public ShopTARge23Context(DbContextOptions<ShopTARge23Context> options)
         : base(options) { }
-
         public DbSet<Spaceship> Spaceships { get; set; }
         public DbSet<FileToApi> FileToApis { get; set; }
-
-
     }
 }

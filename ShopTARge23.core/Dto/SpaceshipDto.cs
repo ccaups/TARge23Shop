@@ -16,14 +16,9 @@ namespace ShopTARge23.Core.Dto
         public DateTime BuiltDate { get; set; }
         public int Crew { get; set; }
         public int EnginePower { get; set; }
-
-        //public Guid? SpaceshipId { get; set; } 
-
         public List<IFormFile> Files { get; set; }
-
         public IEnumerable<FileToApiDto> FileToApiDtos { get; set; } 
             = new List<FileToApiDto>();
-
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
     }

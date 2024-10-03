@@ -22,8 +22,6 @@ namespace ShopTARge23
             builder.Services.AddDbContext<ShopTARge23Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -41,8 +39,7 @@ namespace ShopTARge23
             {
                 FileProvider = new PhysicalFileProvider
                 (Path.Combine(builder.Environment.ContentRootPath, "multipleFileUpload")),
-                RequestPath = "/multipleFileUpload"
-            });
+                RequestPath = "/multipleFileUpload"});
 
             app.UseRouting();
 
