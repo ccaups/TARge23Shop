@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ShopTARge23.ApplicationServices.Services;
 using ShopTARge23.Core.Dto;
 using ShopTARge23.Core.ServiceInterface;
@@ -70,6 +71,43 @@ namespace ShopTARge23.Controllers
             }
 
             return RedirectToAction(nameof(Index), vm);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var kindergarten = await _kindergartensServices.DetailAsync(id);
+
+            if (kindergarten == null)
+            {
+                return NotFound();
+            }
+
+            var vm = new KindergartensDeleteViewModel();
+
+            vm.Id = kindergarten.Id;
+            vm.GroupName = kindergarten.GroupName;
+            vm.ChildrenCount = kindergarten.ChildrenCount;
+            vm.KindergartenName = kindergarten.KindergartenName;
+            vm.Teacher = kindergarten.Teacher;
+            vm.CreatedAt = kindergarten.CreatedAt;
+            vm.UpdatedAt = kindergarten.UpdatedAt;
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            var spaceship = await _kindergartensServices.Delete(id);
+
+
+            if (spaceship == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
