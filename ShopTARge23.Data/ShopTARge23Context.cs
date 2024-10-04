@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShopTARge23.Core.Domain;
-//using Microsoft.EntityFrameworkCore.Relational;
-//using Microsoft.Data.SqlClient;
 
 namespace ShopTARge23.Data
 {
@@ -11,5 +9,7 @@ namespace ShopTARge23.Data
         : base(options) { }
         public DbSet<Spaceship> Spaceships { get; set; }
         public DbSet<FileToApi> FileToApis { get; set; }
+        public DbSet<Kindergarten> Kindergartens { get; set; }
+
     }
 }

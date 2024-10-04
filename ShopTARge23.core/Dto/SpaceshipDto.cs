@@ -15,7 +15,8 @@ namespace ShopTARge23.Core.Dto
         public string SpaceshipModel { get; set; }
         public DateTime BuiltDate { get; set; }
         public int Crew { get; set; }
-        public int EnginePower { get; set; }
+
+
         public List<IFormFile> Files { get; set; }
         public IEnumerable<FileToApiDto> FileToApiDtos { get; set; } 
             = new List<FileToApiDto>();

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IGrouping<string, ShopTARge23.Models.Kindergartens.KindergartensIndexViewModel>>
+
+@{
+    int rowNumber = 1;
+}
+
+<div class="form-group row">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div class="h1">
+            Kindergartens
+        </div>
+        <div>
+            <a asp-action="Create" asp-controller="Kindergartens" class="btn btn-primary">Create</a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<form method="post">
+    <table class="table table-hover">
+        <tbody>
+            @foreach (var group in Model)
+            {
+                <h2>@group.Key</h2>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Group Name</th>
+                            <th scope="col">Teacher</th>
+                            <th scope="col">ChildrenCount</th>
+                            <th scope="col">Updated</th>
+                            <th scope="col">Menu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var kindergarten in group)
+                        {
+                            <tr>
+
+                                <td>@kindergarten.GroupName</td>
+                                <td>@kindergarten.Teacher</td>
+                                <td>@kindergarten.ChildrenCount</td>
+                                <td>@kindergarten.UpdatedAt</td>
+                                <td>
+                                    <a asp-action="details" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-info">Details</a>
+                                    <a asp-action="update" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-primary">Update</a>
+                                    <a asp-action="delete" asp-controller="kindergartens" asp-route-id="@kindergarten.Id" class="btn btn-outline-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </tbody>
+    </table>
+</form>
