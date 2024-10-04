@@ -24,6 +24,7 @@ else
             </div>
             <div class="col-sm-4">
                 <select asp-for="KindergartenName" class="form-control" id="KindergartenNameSelect">
+                    <option value="" disabled selected>Choose Kindergarten</option>
                     @foreach (var kindergartenName in Model.KindergartenNames)
                     {
                         <option value="@kindergartenName">@kindergartenName</option>
@@ -31,44 +32,36 @@ else
                 </select>
             </div>
         </div>
-@*         @if (Model.Id.HasValue)
-        {
-            <div class="form-group row">
-                <label asp-for="KindergartenName" class="col-sm-2 col-form-label">Kindergarten</label>
-                <div class="col-sm-10">
-                    <input asp-for="KindergartenName" class="form-control" />
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="form-group row">
-                <label asp-for="KindergartenName" class="col-sm-2 col-form-label">Kindergarten</label>
-                <div class="col-sm-6">
-                    <input asp-for="KindergartenName" class="form-control" />
-                </div>
-                <div class="col-sm-4">
-                    <select asp-for="KindergartenName" class="form-control" id="KindergartenNameSelect">
-                        @foreach (var kindergartenName in Model.KindergartenNames)
-                        {
-                            <option value="@kindergartenName">@kindergartenName</option>
-                        }
-                    </select>
-                </div>
-            </div>
-        } *@
 
         <div class="form-group row">
-            <label asp-for="GroupName" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
+            <label asp-for="GroupName" class="col-sm-2 col-form-label">GroupName</label>
+            <div class="col-sm-6">
                 <input asp-for="GroupName" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <select asp-for="GroupName" class="form-control" id="GroupNameSelect">
+                    <option value="" disabled selected>Choose GroupName</option>
+                    @foreach (var groupName in Model.GroupNames)
+                    {
+                        <option value="@groupName">@groupName</option>
+                    }
+                </select>
             </div>
         </div>
 
         <div class="form-group row">
-            <label asp-for="Teacher" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
+            <label asp-for="Teacher" class="col-sm-2 col-form-label">Teacher</label>
+            <div class="col-sm-6">
                 <input asp-for="Teacher" class="form-control" />
+            </div>
+            <div class="col-sm-4">
+                <select asp-for="Teacher" class="form-control" id="TeacherNameSelect">
+                    <option value="" disabled selected>Choose Teacher</option>
+                    @foreach (var teacherName in Model.TeacherNames)
+                    {
+                        <option value="@teacherName">@teacherName</option>
+                    }
+                </select>
             </div>
         </div>
 
@@ -93,28 +86,3 @@ else
         <a asp-action="Index" asp-controller="kindergartens" class="btn btn-success">Back</a>
     </form>
 </div>
-
-<script>
-    const inputBox = document.getElementById("KindergartenName");
-    const comboBox = document.getElementById("KindergartenNameSelect");
-
-    if (comboBox == null) {
-        console.error("Lasteaeda ei leitud!");
-    } else {
-        // Funktsioon tekstikasti väärtuse muutmisel
-        inputBox.addEventListener("input", () => {
-            const inputValue = inputBox.value;
-            for (let i = 0; i < comboBox.options.length; i++) {
-                if (comboBox.options[i].value === inputValue) {
-                    comboBox.selectedIndex = i;
-                    break;
-                }
-            }
-        });
-
-        // Funktsioon rippmenüü väärtuse muutmisel
-        comboBox.addEventListener("change", () => {
-            inputBox.value = comboBox.value;
-        });
-    }
-</script>

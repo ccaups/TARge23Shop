@@ -47,7 +47,15 @@ namespace ShopTARge23.Controllers
             result.KindergartenNames = _context.Kindergartens
                 .Select(k => k.KindergartenName)
                 .Distinct()
-                .ToList(); // _context on sinu andmebaasi kontekst
+                .ToList();
+            result.TeacherNames = _context.Kindergartens
+                .Select(k => k.Teacher)
+                .Distinct()
+                .ToList();
+            result.GroupNames = _context.Kindergartens
+                .Select(k => k.GroupName)
+                .Distinct()
+                .ToList();
             return View("CreateUpdate", result);
         }
 
@@ -125,6 +133,17 @@ namespace ShopTARge23.Controllers
                 .Select(k => k.KindergartenName)
                 .Distinct()
                 .ToList();
+            vm.TeacherNames = _context.Kindergartens
+                .Select(k => k.Teacher)
+                .Distinct()
+                .ToList();
+
+            vm.GroupNames = _context.Kindergartens
+                .Select(k => k.GroupName)
+                .Distinct()
+                .ToList();
+                
+
             return View("CreateUpdate", vm);
         }
 

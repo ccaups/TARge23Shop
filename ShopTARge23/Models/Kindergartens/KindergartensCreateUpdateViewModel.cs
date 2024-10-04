@@ -10,5 +10,7 @@
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public List<string> KindergartenNames { get; set; }
+        public List<string> GroupNames { get; set; }
+        public List<string> TeacherNames { get; set; }
     }
 }
