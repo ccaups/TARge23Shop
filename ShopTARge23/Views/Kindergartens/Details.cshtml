@@ -25,6 +25,10 @@
             <label asp-for="Teacher" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.Teacher)
         </div>
+        <div class="form-group row">
+            <label asp-for="ChildrenCount" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ChildrenCount)
+        </div>
 
         <div class="form-group row">
             <label asp-for="CreatedAt" class="col-sm-2 col-form-label"></label>
@@ -37,5 +41,6 @@
         </div>
 
     </dl>
+    <a asp-action="update" asp-controller="kindergartens" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
     <a asp-action="Index" asp-controller="kindergartens" class="btn btn-danger">Back</a>
 </div>

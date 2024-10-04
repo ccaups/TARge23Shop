@@ -29,12 +29,13 @@ namespace ShopTARge23.Controllers
                 .Select(x => new KindergartensIndexViewModel
                 {
                     Id = x.Id,
-                    GroupName = x.GroupName,
-                    ChildrenCount = x.ChildrenCount,
                     KindergartenName = x.KindergartenName,
+                    GroupName = x.GroupName,
                     Teacher = x.Teacher,
+                    ChildrenCount = x.ChildrenCount,
                     UpdatedAt = x.UpdatedAt,
-                });
+                })
+                .GroupBy(x => x.KindergartenName);
 
             return View(result);
         }
@@ -43,7 +44,10 @@ namespace ShopTARge23.Controllers
         public IActionResult Create()
         {
             KindergartensCreateUpdateViewModel result = new();
-
+            result.KindergartenNames = _context.Kindergartens
+                .Select(k => k.KindergartenName)
+                .Distinct()
+                .ToList(); // _context on sinu andmebaasi kontekst
             return View("CreateUpdate", result);
         }
 
@@ -100,6 +104,8 @@ namespace ShopTARge23.Controllers
         {
             var kindergarten = await _kindergartensServices.DetailAsync(id);
 
+            
+
             if (kindergarten == null)
             {
                 return NotFound();
@@ -115,6 +121,10 @@ namespace ShopTARge23.Controllers
             vm.CreatedAt = kindergarten.CreatedAt;
             vm.UpdatedAt = kindergarten.UpdatedAt;
 
+            vm.KindergartenNames = _context.Kindergartens
+                .Select(k => k.KindergartenName)
+                .Distinct()
+                .ToList();
             return View("CreateUpdate", vm);
         }
 

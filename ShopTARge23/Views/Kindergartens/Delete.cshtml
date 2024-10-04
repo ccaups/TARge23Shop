@@ -35,6 +35,14 @@
 
     <dl class="row">
         <div class="form-group row">
+            <label asp-for="ChildrenCount" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ChildrenCount)
+        </div>
+    </dl>
+    
+
+    <dl class="row">
+        <div class="form-group row">
             <label asp-for="CreatedAt" class="col-sm-2 col-form-label"></label>
             @Html.DisplayFor(model => model.CreatedAt)
         </div>

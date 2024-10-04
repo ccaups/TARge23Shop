@@ -1,11 +1,11 @@
 ﻿@model ShopTARge23.Models.Kindergartens.KindergartensCreateUpdateViewModel
 
 
+
 @if (Model.Id.HasValue)
 {
     <h1>Update</h1>
 }
-   
 else
 {
     <h1>Create</h1>
@@ -18,11 +18,45 @@ else
         <input asp-for="UpdatedAt" type="hidden" />
 
         <div class="form-group row">
-            <label asp-for="KindergartenName" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
+            <label asp-for="KindergartenName" class="col-sm-2 col-form-label">Kindergarten</label>
+            <div class="col-sm-6">
                 <input asp-for="KindergartenName" class="form-control" />
             </div>
+            <div class="col-sm-4">
+                <select asp-for="KindergartenName" class="form-control" id="KindergartenNameSelect">
+                    @foreach (var kindergartenName in Model.KindergartenNames)
+                    {
+                        <option value="@kindergartenName">@kindergartenName</option>
+                    }
+                </select>
+            </div>
         </div>
+@*         @if (Model.Id.HasValue)
+        {
+            <div class="form-group row">
+                <label asp-for="KindergartenName" class="col-sm-2 col-form-label">Kindergarten</label>
+                <div class="col-sm-10">
+                    <input asp-for="KindergartenName" class="form-control" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="form-group row">
+                <label asp-for="KindergartenName" class="col-sm-2 col-form-label">Kindergarten</label>
+                <div class="col-sm-6">
+                    <input asp-for="KindergartenName" class="form-control" />
+                </div>
+                <div class="col-sm-4">
+                    <select asp-for="KindergartenName" class="form-control" id="KindergartenNameSelect">
+                        @foreach (var kindergartenName in Model.KindergartenNames)
+                        {
+                            <option value="@kindergartenName">@kindergartenName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        } *@
 
         <div class="form-group row">
             <label asp-for="GroupName" class="col-sm-2 col-form-label"></label>
@@ -38,18 +72,49 @@ else
             </div>
         </div>
 
-        <hr/>
+        <div class="form-group row">
+            <label asp-for="ChildrenCount" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="ChildrenCount" class="form-control" />
+            </div>
+        </div>
+
+        <hr />
 
         @if (Model.Id.HasValue)
         {
             <input asp-action="update" asp-controller="kindergartens" type="submit" class="btn btn-primary" value="Update" />
         }
-
         else
         {
             <input asp-action="create" asp-controller="kindergartens" type="submit" class="btn btn-primary" value="Create" />
-            
+
         }
         <a asp-action="Index" asp-controller="kindergartens" class="btn btn-success">Back</a>
     </form>
 </div>
+
+<script>
+    const inputBox = document.getElementById("KindergartenName");
+    const comboBox = document.getElementById("KindergartenNameSelect");
+
+    if (comboBox == null) {
+        console.error("Lasteaeda ei leitud!");
+    } else {
+        // Funktsioon tekstikasti väärtuse muutmisel
+        inputBox.addEventListener("input", () => {
+            const inputValue = inputBox.value;
+            for (let i = 0; i < comboBox.options.length; i++) {
+                if (comboBox.options[i].value === inputValue) {
+                    comboBox.selectedIndex = i;
+                    break;
+                }
+            }
+        });
+
+        // Funktsioon rippmenüü väärtuse muutmisel
+        comboBox.addEventListener("change", () => {
+            inputBox.value = comboBox.value;
+        });
+    }
+</script>
