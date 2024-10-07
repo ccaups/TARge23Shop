@@ -6,12 +6,12 @@ using ShopTARge23.Core.ServiceInterface;
 
 namespace ShopTARge23.ApplicationServices.Services
 {
-    public class RealEstateServices : IRealEstatesServices
+    public class RealEstatesServices : IRealEstatesServices
     {
         private readonly ShopTARge23Context _context;
         private readonly IFileServices _fileServices;
 
-        public RealEstateServices
+        public RealEstatesServices
             (
             ShopTARge23Context context,
             IFileServices fileServices
